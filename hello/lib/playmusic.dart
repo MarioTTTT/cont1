@@ -109,100 +109,105 @@ player.onPlayerComplete.listen((_) {
 
         body: 
         
-        Padding(padding: const EdgeInsets.all(18.0),
-        
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-              const MusicInfo(),
-              const SizedBox(height: 50,),
-              Slider(
-                value:_posicao.inSeconds.toDouble(),
-             
-              
-              onChanged: (value) async{
-                await player.seek(Duration(seconds: value.toInt()));
-                 setState(() { } );
-                 
-              },
-               min:0,
-              max: _duracao.inSeconds.toDouble(),
-              inactiveColor:Colors.grey,
-              activeColor:AppColors.secondaryColor,
-              
-              ),
-              Row(
-                mainAxisAlignment:MainAxisAlignment.end,
-                children: [
-              
-                     Text(_posicao.format()),
-
-
-              ],),
-              SizedBox(height: 50,),
-              Row(
+        SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Center(
+            child: Padding(padding: const EdgeInsets.all(18.0),
+            
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                 InkWell(
-                    onTap: (){
-                      player.seek(Duration(seconds: _posicao.inSeconds-10));
-                      setState(() {});
-                    },
-                    child: Image.asset('assets/icons/end.png'),
-                 ),
+                crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                  const MusicInfo(),
+                  const SizedBox(height: 50,),
+                  Slider(
+                    value:_posicao.inSeconds.toDouble(),
+                 
+                  
+                  onChanged: (value) async{
+                    await player.seek(Duration(seconds: value.toInt()));
+                     setState(() { } );
+                     
+                  },
+                   min:0,
+                  max: _duracao.inSeconds.toDouble(),
+                  inactiveColor:Colors.grey,
+                  activeColor:AppColors.secondaryColor,
+                  
+                  ),
+                  Row(
+                    mainAxisAlignment:MainAxisAlignment.end,
+                    children: [
+                  
+                         Text(_posicao.format()),
+            
+            
+                  ],),
+                  SizedBox(height: 50,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                     InkWell(
+                        onTap: (){
+                          player.seek(Duration(seconds: _posicao.inSeconds-10));
+                          setState(() {});
+                        },
+                        child: Image.asset('assets/icons/end.png'),
+                     ),
+                    const SizedBox(width: 20,),
+                      InkWell(
+                           onTap: playPause,
+                          child:Icon(
+                          isPlaying ? Icons.pause_circle :Icons.play_circle,
+                          color :Colors.white,
+                         size: 100,
+                           ),
+                         ),
+            
                 const SizedBox(width: 20,),
                   InkWell(
-                       onTap: playPause,
-                      child:Icon(
-                      isPlaying ? Icons.pause_circle :Icons.play_circle,
-                      color :Colors.white,
-                     size: 100,
-                       ),
-                     ),
-
-            const SizedBox(width: 20,),
-              InkWell(
-                    onTap: (){
-                      player.seek(Duration(seconds: _posicao.inSeconds+10));
-                      setState(() {});
-                    },
-                    child: Image.asset('assets/icons/back.png'),
-                 )
-              ],),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    setVolume(volume - 0.1 > 0.0 ? volume - 0.1 : 0.0);
-                  },
-                  icon: Icon(Icons.volume_down),
-                ),
-                Slider(
-                  value: volume,
-                  onChanged: (value) {
-                    setVolume(value);
-                  },
-                  min: 0.0,
-                  max: 1.0,
-                  divisions: 10,
-                  label: '$volume',
-                ),
-                IconButton(
-                  onPressed: () {
-                    setVolume(volume + 0.1 < 1.0 ? volume + 0.1 : 1.0);
-                  },
-                  icon: Icon(Icons.volume_up),
+                        onTap: (){
+                          player.seek(Duration(seconds: _posicao.inSeconds+10));
+                          setState(() {});
+                        },
+                        child: Image.asset('assets/icons/back.png'),
+                     )
+                  ],),
+            
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        setVolume(volume - 0.1 > 0.0 ? volume - 0.1 : 0.0);
+                      },
+                      icon: Icon(Icons.volume_down),
+                    ),
+                    Slider(
+                      value: volume,
+                      onChanged: (value) {
+                        setVolume(value);
+                      },
+                      min: 0.0,
+                      max: 1.0,
+                      divisions: 10,
+                      label: '$volume',
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        setVolume(volume + 0.1 < 1.0 ? volume + 0.1 : 1.0);
+                      },
+                      icon: Icon(Icons.volume_up),
+                    ),
+                  ],
                 ),
               ],
+            
+              ),
+            
+            
             ),
-          ],
-
           ),
-        
-        
         ),
 
 
