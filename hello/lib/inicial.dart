@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hello/perfil.dart';
+import 'package:hello/services/autentica_service.dart';
+import 'package:hello/services/musics.dart';
 import 'package:hello/widgets/body_home.dart';
 import 'package:hello/widgets/confi.dart';
 import 'package:hello/widgets/favorites.dart';
+import 'package:hello/widgets/play_listinsert.dart';
 import 'package:hello/widgets/screenSearch.dart';
 
 import 'colors/colors_theme.dart';
@@ -15,20 +18,33 @@ class Inicial extends StatefulWidget {
   State<Inicial> createState() => _InicialState();
 }
 
+
 class _InicialState extends State<Inicial> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     const BodyInicial(),
     const BodyConfi (),
-     const Favorites(),
+     const MyNotifications(),
     const SearchScreen(),
     // Adicione mais telas aqui conforme necessário
   ];
+ void _showPlaylistNameDialog(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return PlaylistNameDialog(
+          onSave: (String playlistName) {
 
+          },
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    
+    final String nome = AutenticacaoServico().obterNomeUsuarioAtual().toString() ?? 'Nome Padrão';
+   
     return  Scaffold(
       
     backgroundColor:const Color.fromARGB(255, 4,18,46),
@@ -55,15 +71,25 @@ class _InicialState extends State<Inicial> {
            
     
   body: _screens[_selectedIndex],
-      floatingActionButton: ClipOval(
-        child: FloatingActionButton(
-          onPressed: () {
-            // Lógica para o botão flutuante
-          },
-          backgroundColor: AppColors.secondaryColor,
-          foregroundColor: Colors.white,
-          child: const Icon(Icons.add),
-            
+  
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+    shape: BoxShape.circle,
+    border: Border.all(color: AppColors.primaryColor, width: 2.0), // Adiciona a borda branca
+  ),
+        child: ClipOval(
+          
+          child: FloatingActionButton(
+            onPressed: () {
+              // Lógica para o botão flutuante
+                    _showPlaylistNameDialog(context);
+              
+            },
+            backgroundColor: AppColors.secondaryColor,
+            foregroundColor: Colors.white,
+            child: const Icon(Icons.add),
+              
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -101,7 +127,7 @@ class _InicialState extends State<Inicial> {
                   _selectedIndex = 2;
                 });
               },
-              icon: const Icon(Icons.favorite),
+              icon: const Icon(Icons.notifications),
               color: _selectedIndex ==2 ? Colors.white : const Color.fromARGB(255, 5, 35, 91),
             ),
               IconButton(

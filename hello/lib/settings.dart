@@ -39,13 +39,7 @@ class _SettingsState extends State<Settings> {
   //}
  int _counter = 0;
 
-void _incrementCounter() {
-  //altera o estado
-setState(() {
-     
-  _counter++;
-  });
-  }
+
   
   @override
   Widget build(BuildContext context) {

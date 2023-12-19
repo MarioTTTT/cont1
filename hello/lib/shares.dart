@@ -16,11 +16,11 @@ class ShareScreen extends StatefulWidget {
 
 class _ShareScreenState extends State<ShareScreen> {
     final Map<int, Map<String, dynamic>> data = {
-     1: {'image': '','labelText':'Samba', 'proximaTela': PlayPerfil()},
-     2: {'image': '','labelText':'Sertanejo', 'proximaTela': PlayPerfil()},
-     3: {'image': '','labelText':'Podcast',  'proximaTela':PlayPerfil()},
-     4: {'image': '','labelText':'Forro', 'proximaTela': PlayPerfil()},
-     5: {'image': '','labelText':'Pop',  'proximaTela':PlayPerfil()},
+     1: {'image': '','labelText':'Samba', 'proximaTela': PlayPerfil(labelText: 'Forro',)},
+     2: {'image': '','labelText':'Sertanejo', 'proximaTela': PlayPerfil(labelText: 'Forro')},
+     3: {'image': '','labelText':'Podcast',  'proximaTela':PlayPerfil(labelText: 'Forro')},
+     4: {'image': '','labelText':'Forro', 'proximaTela': PlayPerfil(labelText: 'Forro')},
+     5: {'image': '','labelText':'Pop',  'proximaTela':PlayPerfil(labelText: 'Forro')},
   };
 
   @override
@@ -65,16 +65,7 @@ class _ShareScreenState extends State<ShareScreen> {
                                
                     ),
                         
-                                            IconButton(
-                                                     icon: Icon(
-                                                     Icons.add,
-                                                      size: 25,
-                                                      color: Colors.white,
-                                                                                       ), 
-                                                      onPressed: () {  },
-                                                   ),
-                                                
-
+                                   
 
 
 

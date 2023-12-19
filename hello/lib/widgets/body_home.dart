@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hello/playmusic.dart';
+import 'package:hello/services/musics.dart';
+import 'package:hello/widgets/card_inicial.dart';
 
 import '../colors/colors_theme.dart';
 import '../playlist_perfil.dart';
@@ -37,7 +39,7 @@ class _BodyInicialState extends State<BodyInicial> {
                 padding: EdgeInsets.only(top:60), 
                 child: Text(
                   
-                 'Artistas',
+                 'Novidades',
                       style: TextStyle(
                   fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -58,15 +60,26 @@ class _BodyInicialState extends State<BodyInicial> {
                               Column(
                                children: [
                                  Padding(
-                                   padding: const EdgeInsets.all(2.0),
+                                   padding: const EdgeInsets.all(10.0),
                                    child: Container(
                                       padding: const EdgeInsets.all(5.0),
-                                   child: const CircleAvatar(
+                                   child: CircleAvatar(
                                    
                                        
                                            radius: 50,
-                                       backgroundImage: AssetImage(
-                                           'assets/images/drake.jpg'),
+                                  child: GestureDetector(
+                                  onTap: () async {
+                                final musicID = await MusicaService().buscarIdMusicaPorNome('Smells Like Teen Spirit');
+                                 final musicData = await MusicaService().getMusicaById(musicID as String);
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => MusicTocar(musicaData: musicData),
+                                    ));
+                                  },
+                                    child: CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage('https://i0.wp.com/sahiphopza.co/wp-content/uploads/2021/07/nirvana-smells-like-teen-spirit.jpg?ssl=1'),
+                                    ),
+                                  ),
                                            
                                     
                                    ),
@@ -75,7 +88,7 @@ class _BodyInicialState extends State<BodyInicial> {
                                  ),
                                            const SizedBox(height: 2),
                                            const Text(
-                                            'Drake',
+                                            'Nirvana',
                                                style: TextStyle(
                                                fontSize: 15,
                                               fontWeight: FontWeight.bold,
@@ -95,12 +108,23 @@ class _BodyInicialState extends State<BodyInicial> {
 
                                children: [
                                  Container(
-                                      padding: const EdgeInsets.all(5.0),
-                                 child: const CircleAvatar(
+                                      padding: const EdgeInsets.all(10.0),
+                                 child: CircleAvatar(
                                   
                                     radius: 50,
-                                     backgroundImage: AssetImage(
-                                         'assets/images/djavan.png'),
+                                     child: GestureDetector(
+                                  onTap: () async {
+                                final musicID = await MusicaService().buscarIdMusicaPorNome('Thriller');
+                                 final musicData = await MusicaService().getMusicaById(musicID as String);
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => MusicTocar(musicaData: musicData),
+                                    ));
+                                  },
+                                    child: CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage('https://i.discogs.com/ilnZBVjV2VXezZNJBA-sIqEqKrSbpG7ahQYot6rGTXA/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTc2NDcw/MTUtMTQ4MTgyNzQy/OC01NzUwLmpwZWc.jpeg'),
+                                    ),
+                                  ),
                                          
                                    
                                  ),
@@ -108,7 +132,7 @@ class _BodyInicialState extends State<BodyInicial> {
                                  ),
                                            const SizedBox(height: 2),
                                            const Text(
-                                            'Djavan',
+                                            'MichaelJackson',
                                                style: TextStyle(
                                                fontSize: 15,
                                               fontWeight: FontWeight.bold,
@@ -127,15 +151,27 @@ class _BodyInicialState extends State<BodyInicial> {
                               Column(
                                children: [
                                  Container(
-                                      padding: const EdgeInsets.all(5.0),
+                                      padding: const EdgeInsets.all(10.0),
                                 
                                  
-                                   child: const CircleAvatar(
+                                   child:  CircleAvatar(
                                    
                                        
                                            radius: 50,
-                                       backgroundImage: AssetImage(
-                                           'assets/images/KP.png'),
+                                     child: GestureDetector(
+                                  onTap: () async {
+                                final musicID = await MusicaService().buscarIdMusicaPorNome('Look At Me!');
+                                 final musicData = await MusicaService().getMusicaById(musicID as String);
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => MusicTocar(musicaData: musicData),
+                                    ));
+                                  },
+                                    child: CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage('https://i.pinimg.com/236x/c5/ea/43/c5ea431d16926fae9e5bf8152cbfff4d.jpg'),
+                                    ),
+                                  ),
+                                      
                                            
                                     
                                    ),
@@ -144,7 +180,7 @@ class _BodyInicialState extends State<BodyInicial> {
                                  ),
                                            const SizedBox(height: 2),
                                            const Text(
-                                            'Katty Perry',
+                                            'XXXTENTATION',
                                                style: TextStyle(
                                                fontSize: 15,
                                               fontWeight: FontWeight.bold,
@@ -164,7 +200,7 @@ class _BodyInicialState extends State<BodyInicial> {
                               Column(
                                children: [
                                  Container(
-                                      padding: const EdgeInsets.all(5.0),
+                                      padding: const EdgeInsets.all(10.0),
                                 
                                  
                                    child: const CircleAvatar(
@@ -189,30 +225,14 @@ class _BodyInicialState extends State<BodyInicial> {
                                                ),
                                              ),
 
-
-
-
                                ],
 
 
                              ),
-                            
-
-
-
-
 
 
                     ],
             
-
-
-
-
-
-
-
-
 
                   ),
                ),
@@ -243,55 +263,71 @@ class _BodyInicialState extends State<BodyInicial> {
                    
                     children: [
                      GestureDetector(
-                            onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => MusicTocar()));
+                            onTap: () async {
+                              
+                             final musicID = await MusicaService().buscarIdMusicaPorNome('Yourself');
+                                     final musicData = await MusicaService().getMusicaById(musicID as String);
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MusicTocar(musicaData: musicData)));
                                },
                        child: Container(
                      margin: const EdgeInsets.all(10),
                        child: const Image(
                        height: 90,
                         width: 80,
-                            image: AssetImage('assets/images/emi_2.png'),
+                        image: NetworkImage('https://static.stereogum.com/uploads/2022/10/Eminem-Lose-Yourself-1666109360-520x5201-1666540295.jpeg'),
                    ),
                    ),
                           ),
-                                  Container(
-                             margin: const EdgeInsets.all(10),
-                             child:const Image(
-                               height: 95,
-                               width: 95,
-                               image: AssetImage(
-                                   'assets/images/djavan.png'),
-                                   
-                             ),
-                             
-                            
-                             ),
-                              Container(
-                             margin: const EdgeInsets.all(10),
-                             child:const Image(
-                               height: 90,
-                               width: 90,
-                               image: AssetImage(
-                                   'assets/images/KP.png'),
-                                   
-                             ),
-                             
-                            
-                             ),
-                              Container(
-                             margin: const EdgeInsets.all(10),
-                             child:const Image(
-                               height:90,
-                               width: 90,
-                               image: AssetImage(
-                                   'assets/images/KP.png'),
-                                   
-                             ),
-                             
-                            
-                             ),
-                          
+                                GestureDetector(
+                            onTap: () async {
+                              
+                             final musicID = await MusicaService().buscarIdMusicaPorNome('bring me to life');
+                                     final musicData = await MusicaService().getMusicaById(musicID as String);
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MusicTocar(musicaData: musicData)));
+                               },
+                       child: Container(
+                      margin: const EdgeInsets.all(10),
+                       child: const Image(
+                       height: 90,
+                        width: 80,
+                        image: NetworkImage('https://akamai.sscdn.co/uploadfile/letras/albuns/c/e/0/6/874991585597114.jpg'),
+                        ),
+                          ),
+                          ),
+                              
+                             GestureDetector(
+                            onTap: () async {
+                              
+                             final musicID = await MusicaService().buscarIdMusicaPorNome('In The End');
+                                     final musicData = await MusicaService().getMusicaById(musicID as String);
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MusicTocar(musicaData: musicData)));
+                               },
+                       child: Container(
+                      margin: const EdgeInsets.all(10),
+                       child: const Image(
+                       height: 90,
+                        width: 80,
+                        image: NetworkImage('https://i1.sndcdn.com/artworks-000386461686-h1f08n-t500x500.jpg'),
+                        ),
+                          ),
+                          ),
+                              
+                             GestureDetector(
+                            onTap: () async {
+                              
+                             final musicID = await MusicaService().buscarIdMusicaPorNome('Psychosocial');
+                                     final musicData = await MusicaService().getMusicaById(musicID as String);
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => MusicTocar(musicaData: musicData)));
+                               },
+                       child: Container(
+                      margin: const EdgeInsets.all(10),
+                       child: const Image(
+                       height: 90,
+                        width: 80,
+                        image: NetworkImage('https://wikimetalstore.com.br/produtos/imagens/229_1.jpg'),
+                        ),
+                          ),
+                          ),
        
                              
                     ],
@@ -318,423 +354,29 @@ class _BodyInicialState extends State<BodyInicial> {
                      
                    
                     children: [
-                      Card(
-                        color: Color.fromARGB(255,36, 72, 141),
-                        child: Container(
-                                   margin: const EdgeInsets.all(10),
-                                  
-                                     child: Row(
-                                       children: [
-                                         const CircleAvatar(
-                                          radius: 45,
-                                          backgroundImage: AssetImage(
-                                           'assets/images/blodm.jpg'),
-                                           
-                                    ),
-                      
-                                           const SizedBox(width: 15),
-                      
-                                                     Column(
-                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                       children: const [
-                                                        
-                                                         Text(
-                                                           'Willow',
-                                                             style: TextStyle(
-                                                             fontSize: 15,
-                                                            fontWeight: FontWeight.bold,
-                                                             color: Colors.white,
-                                                          ),
-                                                           ),
-                                                         
-                                                      Text(
-                                                        'TaylorSwift',
-                                                          style: TextStyle(
-                                                          fontSize: 12,
-                                                         fontWeight: FontWeight.bold,
-                                                          color: AppColors. textun,
-                                                       ),
-                                                        ),
-                      
-                      
-                      
-                      
-                                                       ],
-                                                     ),
-                                            
-                      
-                                        Container(
-                                      margin: const EdgeInsets.only(left:70),
-                                     child: Row(
-                                       children: [
-                                         IconButton(
-                                           icon: Icon(
-                                           Icons.add,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                             ), 
-                                            onPressed: () {  },
-                                         ),
-                                        IconButton(
-                                          icon: Icon(
-                                           Icons.play_circle,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                            ), 
-                                                                            
-                                          onPressed: () {  },
-                                        ),
-
-
+                                   CustomCard(title:'Willow' ,subtitle:'TaylorSwift' , imageUrl:'https://miro.medium.com/v2/resize:fit:1400/1*5vNSL7_g289H0XVVPZHTHg.jpeg'),
+                                   CustomCard(title:'Another Brick in The Wall' ,subtitle:'Pink Floyd' , imageUrl:'https://i1.sndcdn.com/artworks-000095031213-ohippm-t500x500.jpg'),
+                                   CustomCard(title:'Bloody Mary' ,subtitle:'Lady gaga' , imageUrl:'https://i1.sndcdn.com/artworks-000010634622-9b20i9-t500x500.jpg'),
+                                    CustomCard(title:'Controllah' ,subtitle:'Gorillaz ft.Mc BinLaden' , imageUrl:'https://i1.sndcdn.com/artworks-4DjCzLxDC7VUd0Vz-y3tYXg-t500x500.jpg'),
                                        ],
+                                        
+
+
+
+
                                      ),
+                                   
                                 
-
-
-                             )
-                                        
-                      
-                      
-                      
-                                       ],
-                                        
-
-
-
-
-                                     ),
+                     
                                    
-                                   ),
-                      ),
-                                   Card(
-                                    color: Color.fromARGB(255,36, 72, 141),
-                                     shape: const RoundedRectangleBorder( 
-                                      
-                                        
-                                        //<-- SEE HERE
-                                     side: BorderSide(
-                                    color:  Color.fromARGB(255, 36, 72, 141),
-
-                                 
-                                          ),
-                                         ),
-                                  shadowColor: Colors.black,
-                                     child: Column(
-                                      
-                                       children: [
-                                         Container(
-                                        margin: const EdgeInsets.all(10),
-                                                                   
-                                         child: Row(
-                                           children: [
-                                             const CircleAvatar(
-                                              radius: 45,
-                                              backgroundImage: AssetImage(
-                                               'assets/images/alok.jpg'),
-                                               
-                                                                     ),
-                                   
-                                               const SizedBox(width: 15),
-                                   
-                                   
-                                   
-                                                 Column(
-                                                    mainAxisAlignment: MainAxisAlignment.start,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                   children: const [
-                                                     Text(
-                                                      'Bloody Mary',
-                                                         style: TextStyle(
-                                                         fontSize: 15,
-                                                        fontWeight: FontWeight.bold,
-                                                       color: Colors.white,
-                                                         ),
-                                                       ),
-                                                           Text(
-                                                             'Lady gaga',
-                                                               style: TextStyle(
-                                                               fontSize: 12,
-                                                              fontWeight: FontWeight.bold,
-                                                               color: AppColors. textun,
-                                                            ),
-                                                             ),
-                                   
-                                   
-                                   
-                                                   ],
-                                                 ),
-
-
-                                      Container(
-                                      margin: const EdgeInsets.only(left:45),
-                                     child: Row(
-                                       children: [
-                                         IconButton(
-                                           icon: Icon(
-                                           Icons.add,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                             ), 
-                                            onPressed: () {  },
-                                         ),
-                                        IconButton(
-                                          icon: Icon(
-                                           Icons.play_circle,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                            ), 
-                                                                            
-                                          onPressed: () {  },
-                                        ),
-
-
-                                       ],
-                                     ),
-                                
-
-
-                             )
-                                                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                           ],
-                                         ),
-                                                                    
-                                                                    ),
-                                   
-                                   
-                                   
-                                   
-                                   
-                                                                    
-                                       ],
-                                     ),
-                                   ),
-                                Card(
-                                  color: Color.fromARGB(255,36, 72, 141),
-                          child: Container(
-                                   margin: const EdgeInsets.all(10),
-                                  
-                                     child: Row(
-                                       children: [
-                                         const CircleAvatar(
-                                          radius: 45,
-                                          backgroundImage: AssetImage(
-                                           'assets/images/willow.jpg'),
-                                           
-                                    ),
- 
-                                           const SizedBox(width: 15),
-                                             Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                               children: const [
-                                                 Text(
-                                                  'Hear me Now',
-                                                     style: TextStyle(
-                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
-                                                   color: Colors.white,
-                                                     ),
-                                                   ),
- 
- 
-                                               Text(
-                                                 'Lady gaga',
-                                                   style: TextStyle(
-                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                   color: AppColors. textun,
-                                                ),
-                                                 ),
- 
-
- 
- 
-                                               ],
-                                             ),
-                                         Container(
-                                      margin: const EdgeInsets.only(left:40),
-                                     child: Row(
-                                       children: [
-                                         IconButton(
-                                           icon: Icon(
-                                           Icons.add,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                             ), 
-                                            onPressed: () {  },
-                                         ),
-                                        IconButton(
-                                          icon: Icon(
-                                           Icons.play_circle,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                            ), 
-                                                                            
-                                          onPressed: () {  },
-                                        ),
-
-
-                                       ],
-                                     ),
-                                
-
-
-                             )
-                                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                       ],
-                                     ),
-                                   
-                                   ),
- ),
-                             Card(
-                              color: Color.fromARGB(255,36, 72, 141),
-                               child: Container(
-                                   margin: const EdgeInsets.all(11),
-                                  
-                                     child: Row(
-                                       children: [
-                                         const CircleAvatar(
-                                          radius: 45,
-                                          backgroundImage: AssetImage(
-                                           'assets/images/kod.jpg'),
-                                           
-                                    ),
-                             
-                                           const SizedBox(width: 15),
-                                             Column(
-                                              mainAxisAlignment: MainAxisAlignment.start,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                               children: const [
-                                                 Text(
-                                                  'Controlah',
-                                                     style: TextStyle(
-                                                     fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
-                                                   color: Colors.white,
-                                                     ),
-                                                   ),
-                             
-                             
-                                               Text(
-                                                 'Gorillaz ft.Mc BinLaden',
-                                                   style: TextStyle(
-                                                   fontSize: 12,
-                                                  fontWeight: FontWeight.bold,
-                                                   color: AppColors. textun,
-                                                ),
-                                                 ),
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                                               ],
-                                             ),
-
-
-                                         Container(
-                                   
-                                     child: Row(
-                                       children: [
-                                         IconButton(
-                                           icon: Icon(
-                                           Icons.add,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                             ), 
-                                            onPressed: () {  },
-                                         ),
-                                        IconButton(
-                                          icon: Icon(
-                                           Icons.play_circle,
-                                            size: 40,
-                                            color: Colors.white,
-                                                                            ), 
-                                                                            
-                                          onPressed: () {  },
-                                        ),
-
-
-                                       ],
-                                     ),
-                                
-
-
-                             )
-                                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                       ],
-                                     ),
-                                   
-                                   ),
-                             ),
+                              
                     ],
                   ),
               
        
        
        
-           ],
+           
          ),
        ),
       
@@ -744,7 +386,7 @@ class _BodyInicialState extends State<BodyInicial> {
 
 
 
-     ),
+     
     );
 
   }

@@ -5,38 +5,16 @@ import 'package:hello/perfil.dart';
 
 import 'package:hello/widgets/playlist.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({super.key});
 
-
-
-  @override
-  Widget build(BuildContext context) {
-      return  MaterialApp(
-
-
-      initialRoute:'/',
-        routes: {
-       '/': (context) =>  const MyFavorites(),
-      'perfil': (context) =>  const PerfilScreen(),
-      },
-
-        
-
-        
-    );
-  }
-}
-
-class MyFavorites extends StatefulWidget{
-  const MyFavorites({super.key});
+class MyNotifications extends StatefulWidget{
+  const MyNotifications({super.key});
 
 
 //função pra chamar o state inicial 
   @override
-  State<MyFavorites> createState() => _MyFavoritesState();
+  State<MyNotifications> createState() => _MyNotificationsState();
 }
-class _MyFavoritesState extends State<MyFavorites>{
+class _MyNotificationsState extends State<MyNotifications>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -58,7 +36,7 @@ class _MyFavoritesState extends State<MyFavorites>{
                       padding: EdgeInsets.all(25.0),
                       child: Text(
                                   
-                                 'Favoritos',
+                                 'Notificações',
                                       style: TextStyle(
                                   fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -77,14 +55,6 @@ class _MyFavoritesState extends State<MyFavorites>{
                                                                                        ), 
                                                       onPressed: () {  },
                                                    ),
-                                                 IconButton(
-                                                     icon: const Icon(
-                                                     Icons.favorite,
-                                                      size: 25,
-                                                      color: Colors.white,
-                                                                                       ), 
-                                                      onPressed: () {  },
-                                                   ),
                                                 
 
 
@@ -94,10 +64,7 @@ class _MyFavoritesState extends State<MyFavorites>{
                   ],
                 ),
                   
-                    const PlayCard(),
-                   const PlayCard(),
-                    const PlayCard(),
-                      const PlayCard(),
+       
               ],
               
             ),

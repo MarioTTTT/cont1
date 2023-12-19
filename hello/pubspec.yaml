@@ -30,12 +30,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
+  firebase_core: ^2.24.2
      
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   audioplayers: ^5.2.1 
+  firebase_auth: ^4.15.3
+  firebase_storage: ^11.5.6
+  cloud_firestore: ^4.13.6
+  path: ^1.8.3
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,9 +77,11 @@ flutter:
     - assets/images/Placeholder.png
     - assets/images/emi.png
     - assets/images/emi_2.png
-    - assets/audios/Eminem.mp3
+    - assets/audios/XXXTentacion.mp3
     - assets/icons/back.png
     - assets/icons/end.png
+    - assets/images/Playholder.png
+    - assets/images/peguim.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

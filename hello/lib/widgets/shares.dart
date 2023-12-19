@@ -74,31 +74,7 @@ class _SharesState extends State<Shares> {
                                        ),
                                      ),
 
-                                             Container(
-                                            
-                                               child: IconButton(
-                                                 icon: Icon(
-                                                  Icons.cancel_presentation_outlined,
-                                                   size: 30,
-                                                    color: Colors.white,
-                                                                            
-                                                    ), 
-                                                                              
-                                                                                       onPressed: () {  },
-                                                                                     ),
-                                             ),
-                                         Container(
-                                           
-                                           child: IconButton(
-                                            icon: Icon(
-                                             Icons.folder_shared_rounded,
-                                              size: 30,
-                                              color: Colors.white,
-                                                                              ), 
-                                                                              
-                                            onPressed: () {  },
-                                                                                 ),
-                                         ),
+                                  
 
 
 

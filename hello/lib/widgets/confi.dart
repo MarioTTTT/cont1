@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:hello/login.dart';
 import 'package:hello/main.dart';
+import 'package:hello/perfil.dart';
+import 'package:hello/services/autentica_service.dart';
 import 'package:hello/widgets/name_conf.dart';
 import '../colors/colors_theme.dart';
 import 'name_conf.dart';
@@ -44,7 +47,9 @@ class BodyConfi extends StatelessWidget {
                   ConfigSCreen(
                            iconData: Icons.account_circle_sharp,
                            labelText: 'Perfil',
-                           onPressed: () {}
+                           onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PerfilScreen()));
+                           }
                   ),
                   SizedBox(height: 16,),
                   ConfigSCreen(
@@ -57,7 +62,14 @@ class BodyConfi extends StatelessWidget {
                            iconData: Icons.logout,
                            labelText: 'Sair',
                              onPressed: () {
-                                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MyHomePage()));
+                                
+                               AutenticacaoServico().deslogar();
+                                 Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Login()));
+
+
+
+
+
                                     },
                   ),
 

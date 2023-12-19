@@ -5,6 +5,7 @@ class MusicModel {
   int? musicaano;
   String? musicaimagem;
   String? banda;
-  MusicModel(this.musicatitulo,this.musicaano,this.musicaimagem,this.banda);
+  String? musicaurl;
+  MusicModel(this.musicatitulo,this.musicaano,this.musicaimagem,this.banda, this.musicaurl);
 
 }

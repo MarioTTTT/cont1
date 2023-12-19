@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:hello/admin.dart';
 import 'package:hello/cadastrar.dart';
+import 'package:hello/services/audio_up.dart';
 import 'package:hello/widgets/cadastro_screen.dart';
 import 'package:hello/widgets/login_screen.dart';
 
 import 'cadastro_main.dart';
 import 'login.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+
+
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    
+    options: DefaultFirebaseOptions.currentPlatform,
+   );
+
+
   runApp(const MyApp());
 }
+
+final MusicStorageService musicStorageService = MusicStorageService();//
 
 
 
@@ -39,8 +55,11 @@ class MyApp extends StatelessWidget {
         '/':(context)=>Login(),
         '/home':(context)=>MyHomePage(),
         '/cadastro_main':(context)=>CadastroMain(),
-       '/cadastrar':(context)=>const Cadastrar()
+       '/cadastrar':(context)=>const Cadastrar(),
+       '/admin':(context)=>const AdminMusicAddScreen()
       },
+
+      
     );
   }
 }
@@ -53,6 +72,7 @@ class MyHomePage extends StatefulWidget {
 //função pra chamar o state inicial 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+  
 }
 
 
@@ -88,6 +108,17 @@ class _MyHomePageState extends State<MyHomePage> {
       body:PageView(
         children: pages,
       ),
+ 
+    
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      persistentFooterButtons: [
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/admin'); // Define a rota para a tela de admin
+          },
+          child: Text('Tela de Admin'),
+        ),
+      ],
      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
