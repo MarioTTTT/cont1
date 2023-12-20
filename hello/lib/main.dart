@@ -109,16 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: pages,
       ),
  
-    
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      persistentFooterButtons: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/admin'); // Define a rota para a tela de admin
-          },
-          child: Text('Tela de Admin'),
-        ),
-      ],
+  
      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
